@@ -1,0 +1,22 @@
+<div class="container" *ngIf="!isLoading">
+   <div class="col-12">
+      <h2>{{ dadosLinha?.codigo }} - {{ dadosLinha?.nome }}</h2>
+      <p>Escolha qualquer uma das paradas da linha e veja no mapa a localização.</p>
+      <ul class="list-group">
+         <li class="list-group-item list-group-item-action" *ngFor="let item of items">
+            <a href="https://www.google.com/maps/?q={{item.lat}},{{item.lng}}" target="_blank">
+               <span class="fa fa-map-marker"></span>{{ item.place }}
+            </a>
+         </li>
+      </ul>
+   </div>
+</div>
+
+<div class="loader" [hidden]="!isLoading">
+   <div class="loader-wrapper">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+   </div>
+</div>
