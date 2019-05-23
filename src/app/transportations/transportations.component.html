@@ -1,0 +1,32 @@
+<section *ngIf="!isLoading">
+   <div class="container">
+      <div class="row">
+         <div class="col-12 form-group has-search">
+            <span class="fa fa-search form-control-feedback"></span>
+            <input [(ngModel)]="searchText" type="text" class="form-control" placeholder="Search">
+         </div>
+
+         <div class="col-12">
+            <h2>Rotas</h2>
+            <p>Clique em uma rota para ver o itinerário.</p>
+            <ul class="list-group">
+               <li class="list-group-item list-group-item-action"
+                  *ngFor="let item of items | searchFilter: {codigo: searchText, nome: searchText};">
+                  <a routerLink="/itinerario/{{ item.id }}">
+                     <span class="fa fa-bus"></span> {{ item.codigo }} - {{ item.nome }}
+                  </a>
+               </li>
+            </ul>
+         </div>
+      </div>
+   </div>
+</section>
+
+<div class="loader" [hidden]="!isLoading">
+   <div class="loader-wrapper">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+   </div>
+</div>
